@@ -13,4 +13,8 @@ class UsersController < ApplicationController
       render :user_not_created, status: :unprocessable_entity
     end
   end
+
+  def create_user_params
+    params.require(:user).permit(:email, :username, :password, :password_confirmation)
+  end
 end
