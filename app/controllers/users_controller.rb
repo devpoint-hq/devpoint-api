@@ -19,6 +19,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.all
+    render :index, status: :ok
+  end
+
   def create_user_params
     params.require(:user).permit(:email, :username, :password, :password_confirmation)
   end
