@@ -24,6 +24,17 @@ class UsersController < ApplicationController
     render :index, status: :ok
   end
 
+  def destroy
+    return render :no_user, status: :not_found unless User.exists?(params[:user][:id])
+
+    @user = User.find(params[:user][:id])
+    if @user.destroy
+      render :deleted, status: :ok
+    else
+      render :not_deleted, status: :ok
+    end
+  end
+
   def create_user_params
     params.require(:user).permit(:email, :username, :password, :password_confirmation)
   end
