@@ -10,6 +10,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    if User.exists?(id: params[:id])
+      @user = User.find(params[:id])
+      render :show, status: :ok
+    else
+      render :no_user, status: :ok
+    end
+  end
+
   def create_user_params
     params.require(:user).permit(:email, :username, :password, :password_confirmation)
   end
