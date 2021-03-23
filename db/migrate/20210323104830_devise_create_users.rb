@@ -9,6 +9,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.boolean :admin, null: false, default: false
       t.boolean :developer, null: false, default: false
       t.boolean :hiring_manager, null: false, default: false
+      t.string :social_links, array: true, default: []
+      t.string :tags, array: true, default: []
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable

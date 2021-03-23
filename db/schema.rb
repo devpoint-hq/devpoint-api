@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2021_03_23_104830) do
     t.boolean "admin", default: false, null: false
     t.boolean "developer", default: false, null: false
     t.boolean "hiring_manager", default: false, null: false
+    t.string "social_links", default: [], array: true
+    t.string "tags", default: [], array: true
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
