@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 2021_03_24_081719) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "time", null: false
-    t.string "location", null: false
+    t.string "location"
     t.string "online_link", null: false
-    t.boolean "confirmed", null: false
+    t.boolean "confirmed", default: false
     t.integer "appointment_host_id"
     t.integer "appointment_guest_id"
     t.datetime "created_at", precision: 6, null: false
