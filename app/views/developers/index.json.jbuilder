@@ -1,4 +1,4 @@
-json.users @users do |user|
+json.users @developers do |user|
   json.user do
     json.id user.id
     json.username user.username
