@@ -13,6 +13,15 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def index
+    return head(:unprocessable_entity) unless User.exists?(params[:id])
+
+    @user = User.find(params[:id])
+    @user_hosted_appointments = @user.hosted_appointments
+    @user_guested_appointments = @user.guested_appointments
+    render :index, status: :ok
+  end
+
   def create_appointment_params
     params.permit(:appointment_host_id, :appointment_guest_id, :time, :online_link)
   end
