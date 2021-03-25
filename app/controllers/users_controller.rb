@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       render :show, status: :ok
     else
-      render :no_user, status: :ok
+      render :no_user, status: :not_found
     end
   end
 
