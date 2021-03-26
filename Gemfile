@@ -72,3 +72,4 @@ gem 'devise'
 gem 'gravatar_image_tag'
 gem 'hirb'
 gem 'rack-cors'
+gem 'simple_token_authentication', '~> 1.0' # see semver.org
