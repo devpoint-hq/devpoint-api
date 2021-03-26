@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     resources :appointments, defaults: { format: :json }
   end
 
-  resources :developers, only: :index, defaults: { format: :json }
+  resources :sessions, only: [:create, :destroy], defaults: { format: :json }
+  
+  resources :developers, only: [:index, :show], defaults: { format: :json }
 
   root 'pages#index'
 end
