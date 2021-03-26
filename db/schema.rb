@@ -32,12 +32,13 @@ ActiveRecord::Schema.define(version: 2021_03_24_081719) do
     t.boolean "admin", default: false, null: false
     t.boolean "developer", default: false, null: false
     t.boolean "hiring_manager", default: false, null: false
-    t.string "social_links", default: [], array: true
-    t.string "tags", default: [], array: true
     t.string "encrypted_password", default: "", null: false
+    t.string "authentication_token"
+    t.string "char(30)"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
