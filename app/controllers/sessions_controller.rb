@@ -1,23 +1,23 @@
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
-  def create
-    return unless User.exists?(username: create_session_params[:username])
+  def show
+    return unless User.exists?(email: create_session_params[:email])
 
-    @user = User.find_by(username: create_session_params[:username])
+    @user = User.find_by(email: create_session_params[:email])
     if @user.valid_password?(create_session_params[:password])
-      render :session_created, status: :created
+      render :show, status: :created
     else
       render json: { message: 'Invalid credentails.' }
     end
   end
 
-  def destroy
-    @user = User.where(username: params[:username])
-    if @user.update!(
+  def update
+    @user = User.where(email: params[:email])
+    if @user.update(
       authentication_token: nil,
       password: params[:password],
-      password_confirmation: params[:password_confirmation]
+      password_confirmation: params[:password]
     )
       render json: { message: 'Session ended successfully' }, status: :ok
     else
@@ -28,6 +28,6 @@ class SessionsController < ApplicationController
   private
 
   def create_session_params
-    params.permit(:username, :password)
+    params.permit(:email, :password)
   end
 end
