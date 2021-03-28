@@ -3,7 +3,10 @@ Rails.application.routes.draw do
     resources :appointments, defaults: { format: :json }
   end
 
-  resources :developers, only: :index, defaults: { format: :json }
+  get '/sessions', to: 'sessions#show'
+  put '/sessions', to: 'sessions#update'
+
+  resources :developers, only: [:index, :show], defaults: { format: :json }
 
   root 'pages#index'
 end
