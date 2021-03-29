@@ -19,6 +19,12 @@ class Users::SessionsController < Devise::SessionsController
     end
   end
 
+  def destroy
+    Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+    yield if block_given?
+    render json: { message: 'Signed out successfully.' }
+  end
+
   protected
 
   def respond_with_authentication_token(resource)
