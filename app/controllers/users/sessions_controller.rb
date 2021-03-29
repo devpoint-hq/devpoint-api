@@ -8,4 +8,25 @@ class Users::SessionsController < Devise::SessionsController
       render json: { message: 'Please sign in.' }
     end
   end
+
+  def create
+    if User.exists?(email: params[:user][:email])
+      self.resource = warden.authenticate!(auth_options)
+      sign_in(resource_name, resource)
+      respond_with_authentication_token(resource)
+    else
+      render json: { message: 'Invalid credentials' }
+    end
+  end
+
+  protected
+
+  def respond_with_authentication_token(resource)
+    render json: {
+      success: true,
+      id: resource.id,
+      username: resource.username,
+      email: resource.email
+    }
+  end
 end
