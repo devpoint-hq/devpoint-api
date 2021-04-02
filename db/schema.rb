@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 2021_03_24_081719) do
     t.string "email", default: "", null: false
     t.string "username", default: "", null: false
     t.boolean "admin", default: false, null: false
-    t.boolean "developer", default: false, null: false
-    t.boolean "hiring_manager", default: false, null: false
+    t.boolean "developer", default: true, null: false
+    t.boolean "hiring_manager", default: true, null: false
     t.string "encrypted_password", default: "", null: false
     t.string "authentication_token"
     t.string "char(30)"
