@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_130844) do
+ActiveRecord::Schema.define(version: 2021_04_03_132437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_130844) do
   create_table "appointments", force: :cascade do |t|
     t.datetime "time", null: false
     t.string "location"
-    t.string "online_link", null: false
+    t.string "video_conf_link", null: false
     t.boolean "confirmed", default: false
     t.integer "appointment_host_id"
     t.integer "appointment_guest_id"
@@ -26,11 +26,19 @@ ActiveRecord::Schema.define(version: 2021_04_03_130844) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "links", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "url", null: false
+    t.integer "iser_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "names", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
     t.string "other_names"
-    t.string "user_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_130844) do
     t.string "email", default: "", null: false
     t.string "username", default: "", null: false
     t.boolean "admin", default: false, null: false
-    t.boolean "developer", null: false
+    t.boolean "developer", default: false, null: false
     t.boolean "hiring_manager", default: true, null: false
     t.string "encrypted_password", default: "", null: false
     t.string "authentication_token"
