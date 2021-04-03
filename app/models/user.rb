@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validates :password, presence: true
   validates :password_confirmation, presence: true
 
+  has_one_attached :profile_image
   has_many :names, dependent: :delete_all
   has_many :links, dependent: :delete_all
   has_many :skills, dependent: :delete_all
