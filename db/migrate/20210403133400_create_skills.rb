@@ -5,5 +5,6 @@ class CreateSkills < ActiveRecord::Migration[6.0]
       t.integer :user_id
       t.timestamps
     end
+    add_index :skills, [:user_id, :name], unique: true
   end
 end

@@ -8,5 +8,8 @@ class CreateNames < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :names, [:user_id, :first_name], unique: true
+    add_index :names, [:user_id, :last_name], unique: true
+    add_index :names, [:user_id, :other_names], unique: true
   end
 end
