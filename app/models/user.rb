@@ -9,9 +9,10 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
 
   has_one_attached :profile_image
-  has_one :name, dependent: :destroy
+  has_many :names, dependent: :destroy
   has_many :links, dependent: :delete_all
   has_many :skills, dependent: :delete_all
+  has_many :jobs, dependent: :delete_all
   has_many :hosted_appointments, class_name: 'Appointment', foreign_key: :appointment_host_id, dependent: :delete_all
   has_many :guested_appointments, class_name: 'Appointment', foreign_key: :appointment_guest_id, dependent: :delete_all
 end
