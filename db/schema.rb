@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_151242) do
+ActiveRecord::Schema.define(version: 2021_04_04_084604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,12 +47,24 @@ ActiveRecord::Schema.define(version: 2021_04_03_151242) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "jobs", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "company_name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "links", force: :cascade do |t|
     t.string "name", null: false
     t.string "url", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "name"], name: "index_links_on_user_id_and_name", unique: true
+    t.index ["user_id", "url"], name: "index_links_on_user_id_and_url", unique: true
   end
 
   create_table "names", force: :cascade do |t|
@@ -62,6 +74,9 @@ ActiveRecord::Schema.define(version: 2021_04_03_151242) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "first_name"], name: "index_names_on_user_id_and_first_name", unique: true
+    t.index ["user_id", "last_name"], name: "index_names_on_user_id_and_last_name", unique: true
+    t.index ["user_id", "other_names"], name: "index_names_on_user_id_and_other_names", unique: true
   end
 
   create_table "skills", force: :cascade do |t|
@@ -69,6 +84,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_151242) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "name"], name: "index_skills_on_user_id_and_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
