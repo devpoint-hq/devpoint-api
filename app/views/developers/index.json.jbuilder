@@ -7,10 +7,12 @@ json.developers @developers do |user|
     json.developer 'Yes' if user.developer
   end
   json.links user.links do |link|
+    json.id link.id
     json.link_name link.name
     json.url link.url
   end
   json.skills user.skills do |skill|
+    json.id skill.id
     json.skill_name skill.name
   end
   json.jobs user.jobs do |job|
