@@ -16,9 +16,9 @@
     password: '12345678',
     password_confirmation: '12345678'
   )
-  user.names.create({
+  user.names.create(
     first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name}
+    last_name: Faker::Name.last_name
   )
   user.links.create(
     [
