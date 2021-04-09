@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  resources :users, defaults: { format: :json } do
-    resources :appointments, defaults: { format: :json }
-  end
+  devise_for :users, only: [:sessions], controllers: {sessions: 'users/sessions'}
 
-  resources :developers, only: :index, defaults: { format: :json }
+  resources :users, defaults: { format: :json }
+
+  resources :appointments, defaults: { format: :json }
+  
+  get '/sessions/validate', to: 'users#validate_session'
+
+  resources :developers, only: [:index, :show], defaults: { format: :json }
 
   root 'pages#index'
 end
