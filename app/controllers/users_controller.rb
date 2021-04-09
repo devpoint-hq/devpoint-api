@@ -1,21 +1,20 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def validate_session
+    if user_session
+      render :session_validated, status: :ok
+    else
+      render json: { message: 'No active session' }, status: :unauthorized
+    end
+  end
+
   def create
     @user = User.new(create_user_params)
     if @user.save
       render :created, status: :ok
     else
       head(:unprocessable_entity)
-    end
-  end
-
-  def show
-    if User.exists?(id: params[:id])
-      @user = User.find(params[:id])
-      render :show, status: :ok
-    else
-      render :no_user, status: :not_found
     end
   end
 

@@ -56,7 +56,6 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
-  gem 'faker'
   gem 'launchy'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
@@ -69,6 +68,8 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'better_errors', '~> 2.8', '>= 2.8.1'
 gem 'devise'
+gem 'faker'
 gem 'gravatar_image_tag'
 gem 'hirb'
 gem 'rack-cors'
+gem 'simple_token_authentication', '~> 1.0' # see semver.org
