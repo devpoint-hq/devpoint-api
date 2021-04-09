@@ -71,5 +71,6 @@ gem 'devise'
 gem 'faker'
 gem 'gravatar_image_tag'
 gem 'hirb'
+gem 'mimemagic', '~> 0.3.10'
 gem 'rack-cors'
 gem 'simple_token_authentication', '~> 1.0' # see semver.org
