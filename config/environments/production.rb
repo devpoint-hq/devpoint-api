@@ -110,4 +110,6 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.hosts << "anewman15-dev-point.herokuapp.com"
+  config.action_dispatch.cookies_same_site_protection = :none
+
 end
