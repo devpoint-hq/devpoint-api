@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resources :users, defaults: { format: :json }
 
   resources :appointments, defaults: { format: :json }
-  
+
   get '/sessions/validate', to: 'users#validate_session'
 
   resources :developers, only: [:index, :show], defaults: { format: :json }
 
-  root 'pages#index'
+  root to: redirect('https://anewman15-dev-point.netlify.app/')
 end
