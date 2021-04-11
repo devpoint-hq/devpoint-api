@@ -27,6 +27,6 @@ class Users::SessionsController < Devise::SessionsController
         username: resource.username,
         email: resource.email
       }
-    }, staus: :created
+    }, status: :created
   end
 end
