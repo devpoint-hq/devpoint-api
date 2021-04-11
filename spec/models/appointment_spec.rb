@@ -7,4 +7,9 @@ RSpec.describe Appointment, type: :model do
     it { should validate_presence_of(:location) }
     it { should validate_presence_of(:time) }
   end
+
+  describe 'associations' do
+    it { should belong_to(:appointment_host) }
+    it { should belong_to(:appointment_guest) }
+  end
 end
