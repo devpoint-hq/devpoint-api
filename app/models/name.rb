@@ -3,5 +3,5 @@ class Name < ApplicationRecord
   validates :last_name, presence: true
   validates :user_id, presence: true
 
-  belongs_to :user, optional: true
+  belongs_to :user
 end
