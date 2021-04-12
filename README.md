@@ -1,5 +1,5 @@
-# DevPoint - Set an Appointment with a Developer
-A site that allows hiring managers find niche developers. Built with Rails/React/Redux
+# DevPoint API
+This is the backend API of DevPoint. Frontend repo available [here](https://github.com/anewman15/dev-point-react/)
 
 ## App Screenshot
 ![app screenshot](./app-screenshot.png)
@@ -11,13 +11,11 @@ A site that allows hiring managers find niche developers. Built with Rails/React
 * Devise
 * PostgreSQL
 * Jbuilder
-* React
-* Redux
 
 ## Live Version
-Live on [Heroku](https://anewman15-deve-point.herokuapp.com/)
+Live on [Heroku](https://anewman15-dev-point.herokuapp.com/)
 
-## Deployment
+## Local Deployment
 
 ### Getting Started
 
@@ -37,6 +35,7 @@ Setup database with:
 ```
    rails db:create
    rails db:migrate
+   rails db:seed
 ```
 
 ### Usage
@@ -48,7 +47,13 @@ Start server with:
 ```
 
 1. Open `http://localhost:3000/` in your browser
+2. Sign up, log in and use the website to view developers list, their profiles
+3. Set appointments from the `/book_appointments` route
+4. View the list of your appointments from `/appointments` route
 
+## Testing
+1. Run `bundle exec rspec spec/models` in the Terminal to run the models tests
+2. Run `bundle exec rspec spec/controllers` in the Terminal to run the controllers tests
 
 ## Author
 👤 **Abdullah Numan**
