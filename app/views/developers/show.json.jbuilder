@@ -14,6 +14,9 @@ json.user do
   json.skills @user.skills do |skill|
     json.id skill.id
     json.skill_name skill.name
+    json.self_rating skill.self_rating
+    json.experience skill.years_of_experience
+    json.projects_count skill.number_of_projects
   end
   json.jobs @user.jobs do |job|
     json.title job.title
