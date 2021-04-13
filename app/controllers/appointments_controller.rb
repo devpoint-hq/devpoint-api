@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def create
     @appointment = current_user.appointments.build(create_appointment_params)
@@ -12,8 +12,8 @@ class AppointmentsController < ApplicationController
   end
 
   def index
-    @user_hosted_appointments = current_user.hosted_appointments.joins(:appointment_guest)
-    @user_guested_appointments = current_user.guested_appointments.joins(:appointment_host)
+    @user_hosted_appointments = current_user.hosted_appointments.with_guest_details
+    @user_guested_appointments = current_user.guested_appointments.with_host_details
     render :index, status: :ok
   end
 
