@@ -67,20 +67,11 @@ ActiveRecord::Schema.define(version: 2021_04_04_084604) do
     t.index ["user_id", "url"], name: "index_links_on_user_id_and_url", unique: true
   end
 
-  create_table "names", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "other_names"
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id", "first_name"], name: "index_names_on_user_id_and_first_name", unique: true
-    t.index ["user_id", "last_name"], name: "index_names_on_user_id_and_last_name", unique: true
-    t.index ["user_id", "other_names"], name: "index_names_on_user_id_and_other_names", unique: true
-  end
-
   create_table "skills", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
+    t.integer "years_of_experience", null: false
+    t.integer "number_of_projects", null: false
+    t.integer "self_rating", null: false
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -90,9 +81,12 @@ ActiveRecord::Schema.define(version: 2021_04_04_084604) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "username", default: "", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "other_names"
     t.boolean "admin", default: false, null: false
     t.boolean "developer", default: false, null: false
-    t.boolean "hiring_manager", default: true, null: false
+    t.boolean "hiring_manager", default: false, null: false
     t.string "encrypted_password", default: "", null: false
     t.string "authentication_token"
     t.string "char(30)"
