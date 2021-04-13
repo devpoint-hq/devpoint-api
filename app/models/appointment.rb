@@ -6,4 +6,7 @@ class Appointment < ApplicationRecord
 
   belongs_to :appointment_host, -> { where hiring_manager: true }, class_name: 'User'
   belongs_to :appointment_guest, -> { where developer: true }, class_name: 'User'
+
+  scope :with_guest_details, -> { includes :appointment_guest }
+  scope :with_host_details, -> { includes :appointment_host }
 end
