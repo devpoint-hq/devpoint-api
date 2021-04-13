@@ -18,7 +18,6 @@ class User < ApplicationRecord
   has_many :guested_appointments, class_name: 'Appointment', foreign_key: :appointment_guest_id, dependent: :delete_all
 
   scope :is_developer, -> { where(developer: true) }
-  scope :with_names, -> { includes :names }
   scope :with_links, -> { includes :links }
   scope :with_skills, -> { includes :skills }
   scope :with_jobs, -> { includes :jobs }
