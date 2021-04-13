@@ -8,9 +8,9 @@ class DevelopersController < ApplicationController
   end
 
   def show
-    @user = User.joins(:names).where(id: params[:id]).first
+    @user = User.is_developer.with_links.with_skills.with_jobs.where(id: params[:id]).first
     if @user
-      render :show, status: :ok if @user.developer
+      render :show, status: :ok
     else
       render :no_developer, status: :not_found
     end
