@@ -3,7 +3,7 @@ class DevelopersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @developers = User.joins(:names).where(developer: true)
+    @developers = User.is_developer.with_names.with_links.with_skills.with_jobs
     render :index, status: :ok
   end
 
