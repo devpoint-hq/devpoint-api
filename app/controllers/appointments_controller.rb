@@ -7,7 +7,7 @@ class AppointmentsController < ApplicationController
     if @appointment.save
       render :appointment_created, status: :created
     else
-      head(:unprocessable_entity)
+      render :appointment_not_created, status: :unprocessable_entity
     end
   end
 
