@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if @user.save
       render :created, status: :ok
     else
-      head(:unprocessable_entity)
+      render :user_not_created, status: :unprocessable_entity
     end
   end
 
