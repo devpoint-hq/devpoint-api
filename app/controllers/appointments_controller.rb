@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def create
     @appointment = current_user.appointments.build(create_appointment_params)
