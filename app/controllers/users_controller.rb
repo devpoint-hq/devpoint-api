@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(create_user_params)
+    @user.hiring_manager = true
+
     if @user.save
       render :created, status: :ok
     else
