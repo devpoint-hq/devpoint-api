@@ -3,12 +3,12 @@ class DevelopersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @developers = User.is_developer.with_links.with_skills.with_jobs
+    @developers = User.all_with_developer_details
     render :index, status: :ok
   end
 
   def show
-    @user = User.is_developer.with_links.with_skills.with_jobs.where(id: params[:id]).first
+    @user = User.is_developer_with_details(params[:id])
     if @user
       render :show, status: :ok
     else
