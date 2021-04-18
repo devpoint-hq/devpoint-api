@@ -12,8 +12,8 @@ class AppointmentsController < ApplicationController
   end
 
   def index
-    @user_hosted_appointments = current_user.hosted_appointments.with_guest_details
-    @user_guested_appointments = current_user.guested_appointments.with_host_details
+    @user_hosted_appointments = Appointment.hosted_by(current_user)
+    @user_guested_appointments = Appointment.guested_by(current_user)
     render :index, status: :ok
   end
 

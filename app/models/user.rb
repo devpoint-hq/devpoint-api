@@ -12,9 +12,8 @@ class User < ApplicationRecord
   has_many :links, dependent: :delete_all
   has_many :skills, dependent: :delete_all
   has_many :jobs, dependent: :delete_all
+
   has_many :appointments, class_name: 'Appointment', foreign_key: :appointment_host_id, dependent: :delete_all
-  has_many :hosted_appointments, class_name: 'Appointment', foreign_key: :appointment_host_id
-  has_many :guested_appointments, class_name: 'Appointment', foreign_key: :appointment_guest_id, dependent: :delete_all
 
   scope :all_with_developer_details, -> { where(developer: true).includes(:links, :skills, :jobs) }
   scope :is_developer_with_details, (lambda do |id|

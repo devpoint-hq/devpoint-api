@@ -5,9 +5,9 @@ class Appointment < ApplicationRecord
   validates :time, presence: true
   validates :video_conf_link, presence: true
 
-  belongs_to :appointment_host, -> { where hiring_manager: true }, class_name: 'User'
-  belongs_to :appointment_guest, -> { where developer: true }, class_name: 'User'
+  belongs_to :appointment_host, -> { where hiring_manager: true }, class_name: 'User', foreign_key: :appointment_host_id
+  belongs_to :appointment_guest, -> { where developer: true }, class_name: 'User', foreign_key: :appointment_guest_id
 
-  scope :with_guest_details, -> { includes :appointment_guest }
-  scope :with_host_details, -> { includes :appointment_host }
+  scope :hosted_by, ->(user) { where(appointment_host: user).includes(:appointment_guest) }
+  scope :guested_by, ->(user) { where(appointment_guest: user).includes(:appointment_host) }
 end
