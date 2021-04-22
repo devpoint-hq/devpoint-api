@@ -7,7 +7,7 @@ class Users::SessionsController < Devise::SessionsController
       sign_in(resource_name, resource)
       render :session_created, status: :created
     else
-      render json: { message: 'Invalid credentials' }, status: :unauthorized
+      render json: { error: 'Invalid Email or password.' }, status: :unauthorized
     end
   end
 
