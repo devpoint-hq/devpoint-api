@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -66,8 +66,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'aws-sdk-s3'
 gem 'better_errors', '~> 2.8', '>= 2.8.1'
 gem 'devise'
+gem 'dotenv-rails'
 gem 'faker'
 gem 'gravatar_image_tag'
 gem 'hirb'
