@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users, only: [:sessions], controllers: {sessions: 'users/sessions'}, defaults: { format: :json }
+
+  resources :users, defaults: { format: :json }
+
+  resources :appointments, defaults: { format: :json }
+
+  resources :developers, only: [:index, :show], defaults: { format: :json }
 end
