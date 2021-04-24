@@ -7,13 +7,13 @@ class AppointmentsController < ApplicationController
     if @appointment.save
       render :appointment_created, status: :created
     else
-      head(:unprocessable_entity)
+      render :appointment_not_created, status: :unprocessable_entity
     end
   end
 
   def index
-    @user_hosted_appointments = current_user.hosted_appointments.joins(:appointment_guest)
-    @user_guested_appointments = current_user.guested_appointments.joins(:appointment_host)
+    @user_hosted_appointments = Appointment.hosted_by(current_user)
+    @user_guested_appointments = Appointment.guested_by(current_user)
     render :index, status: :ok
   end
 

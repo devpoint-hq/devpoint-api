@@ -1,5 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Link, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    subject { FactoryBot.build(:link) }
+
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:url) }
+    it { should validate_uniqueness_of(:url) }
+  end
+
+  describe 'associations' do
+    it { should belong_to(:user) }
+  end
 end

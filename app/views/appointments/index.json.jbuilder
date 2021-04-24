@@ -3,8 +3,11 @@ json.appointments do
     json.id appointment.id
     json.guest do
       json.id appointment.appointment_guest.id
-      json.first_name appointment.appointment_guest.names.first.first_name
-      json.last_name appointment.appointment_guest.names.first.last_name
+      json.email appointment.appointment_guest.email
+      json.username appointment.appointment_guest.username
+      json.first_name appointment.appointment_guest.first_name
+      json.last_name appointment.appointment_guest.last_name
+      json.other_names appointment.appointment_guest.other_names
     end
     json.time appointment.time
     json.location appointment.location
@@ -15,8 +18,11 @@ json.appointments do
     json.id appointment.id
     json.host do
       json.id appointment.appointment_host.id
-      json.first_name appointment.appointment_host.names.first.first_name
-      json.last_name appointment.appointment_host.names.first.last_name
+      json.email appointment.appointment_host.email
+      json.username appointment.appointment_host.username
+      json.first_name appointment.appointment_host.first_name
+      json.last_name appointment.appointment_host.last_name
+      json.other_names appointment.appointment_host.other_names
     end
     json.time appointment.time
     json.location appointment.location
