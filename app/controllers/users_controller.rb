@@ -3,19 +3,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(create_user_params)
+    @user.hiring_manager = true
+
     if @user.save
       render :created, status: :ok
     else
-      head(:unprocessable_entity)
-    end
-  end
-
-  def show
-    if User.exists?(id: params[:id])
-      @user = User.find(params[:id])
-      render :show, status: :ok
-    else
-      render :no_user, status: :not_found
+      render :user_not_created, status: :unprocessable_entity
     end
   end
 

@@ -10,15 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_24_081719) do
+ActiveRecord::Schema.define(version: 2021_04_04_084604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
   create_table "appointments", force: :cascade do |t|
     t.datetime "time", null: false
     t.string "location"
-    t.string "online_link", null: false
+    t.string "video_conf_link", null: false
     t.boolean "confirmed", default: false
     t.integer "appointment_host_id"
     t.integer "appointment_guest_id"
@@ -26,20 +47,56 @@ ActiveRecord::Schema.define(version: 2021_03_24_081719) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "jobs", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "company_name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "url", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "name"], name: "index_links_on_user_id_and_name", unique: true
+    t.index ["user_id", "url"], name: "index_links_on_user_id_and_url", unique: true
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "years_of_experience", null: false
+    t.integer "number_of_projects", null: false
+    t.integer "self_rating", null: false
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "name"], name: "index_skills_on_user_id_and_name", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "username", default: "", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "other_names"
     t.boolean "admin", default: false, null: false
     t.boolean "developer", default: false, null: false
     t.boolean "hiring_manager", default: false, null: false
-    t.string "social_links", default: [], array: true
-    t.string "tags", default: [], array: true
     t.string "encrypted_password", default: "", null: false
+    t.string "authentication_token"
+    t.string "char(30)"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
 end
