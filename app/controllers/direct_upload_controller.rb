@@ -1,4 +1,6 @@
 class DirectUploadController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
     response = generate_direct_upload(blob_params)
     render json: response
