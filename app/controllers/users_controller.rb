@@ -12,7 +12,15 @@ class UsersController < ApplicationController
     end
   end
 
-  def create_user_params
-    params.permit(:email, :username, :password, :password_confirmation)
+  def update
+    if current_user.update!(user_params)
+      render json: { message: 'User updated successfully.' }, status: :ok
+    else
+      render json: { message: 'Something went wrong. User not updated.' }, status: :unprocessable_entity
+    end
+  end
+
+  def user_params
+    params.permit(:email, :username, :password, :password_confirmation, :profile_image)
   end
 end
