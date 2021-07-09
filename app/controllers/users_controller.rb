@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    @user = User.new(create_user_params)
+    @user = User.new(user_params)
     @user.hiring_manager = true
 
     if @user.save
@@ -21,6 +21,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.permit(:email, :username, :password, :password_confirmation, :profile_image)
+    params.require(:user).permit(:email, :username, :password, :password_confirmation, :profile_image)
   end
 end
