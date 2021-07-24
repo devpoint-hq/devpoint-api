@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   resources :users, defaults: { format: :json }
   resources :developers, only: [:index, :show], defaults: { format: :json }
-  resources :jobs, except: [ :new, :edit ], defaults: { format: :json }
-  resources :links, except: [ :new, :edit ], defaults: { format: :json }
-  resources :skills, except: [ :new, :edit ], defaults: { format: :json }
+  resources :jobs, except: [ :new, :show, :edit ], defaults: { format: :json }
+  resources :links, except: [ :new, :show, :edit ], defaults: { format: :json }
+  resources :skills, except: [ :new, :show, :edit ], defaults: { format: :json }
 
   post '/presigned_url', to: 'direct_upload#create'
 
