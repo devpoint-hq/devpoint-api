@@ -1,4 +1,13 @@
 class JobsController < ApplicationController
+  def create
+    @job = current_user.jobs.build(jobs_params)
+
+    if @job.save
+      render :job_created, status: :created
+    else
+      render :job_not_created, status: :unprocessable_entity
+    end
+  end
 
   private
 
