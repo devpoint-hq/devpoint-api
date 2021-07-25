@@ -1,4 +1,6 @@
 class LinksController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
     @link = current_user.links.build(link_params)
 
@@ -7,6 +9,10 @@ class LinksController < ApplicationController
     else
       render :link_not_created, status: :unprocessable_entity
     end
+  end
+
+  def index
+    @links = current_user.links
   end
 
   private
