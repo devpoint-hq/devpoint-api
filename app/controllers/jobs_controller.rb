@@ -15,6 +15,20 @@ class JobsController < ApplicationController
     @jobs = current_user.jobs
   end
 
+  def destroy
+    @job = Job.where(id: params[:id]).first
+
+    if @job
+      if @job.destroy
+        render :job_destroyed, status: :ok
+      else
+        render :job_not_destroyed, status: :unprocessable_entity
+      end
+    else
+      render :job_does_not_exist, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def job_params
