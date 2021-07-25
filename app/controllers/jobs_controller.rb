@@ -1,6 +1,8 @@
 class JobsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
-    @job = current_user.jobs.build(jobs_params)
+    @job = current_user.jobs.build(job_params)
 
     if @job.save
       render :job_created, status: :created
