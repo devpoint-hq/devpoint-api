@@ -25,7 +25,7 @@ class JobsController < ApplicationController
         render :job_not_destroyed, status: :unprocessable_entity
       end
     else
-      render :job_does_not_exist, status: :unprocessable_entity
+      render :job_does_not_exist, status: :not_found
     end
   end
 

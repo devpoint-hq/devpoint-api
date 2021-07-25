@@ -15,6 +15,20 @@ class LinksController < ApplicationController
     @links = current_user.links
   end
 
+  def destroy
+    @link = Link.where(id: params[:id]).first
+
+    if @link
+      if @link.destroy
+        render :link_destroyed, status: :ok
+      else
+        render :link_not_destroyed, status: :unprocessable_entity
+      end
+    else
+      render :link_does_not_exist, status: :not_found
+    end
+  end
+
   private
 
   def link_params
