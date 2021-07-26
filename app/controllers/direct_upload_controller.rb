@@ -1,5 +1,6 @@
 class DirectUploadController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
 
   def create
     response = generate_direct_upload(blob_params)

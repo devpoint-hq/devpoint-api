@@ -1,5 +1,6 @@
 class SkillsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
 
   def create
     @skill = current_user.skills.build(skill_params)

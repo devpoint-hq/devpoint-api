@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
 
   def create
     @link = current_user.links.build(link_params)
