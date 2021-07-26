@@ -1,6 +1,16 @@
 class SkillsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def create
+    @skill = current_user.skills.build(skill_params)
+
+    if @skill.save
+      render :skill_created, status: :created
+    else
+      render :skill_not_created, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def skill_params
