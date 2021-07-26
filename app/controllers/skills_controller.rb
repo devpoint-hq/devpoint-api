@@ -11,6 +11,12 @@ class SkillsController < ApplicationController
     end
   end
 
+  def index
+    @skills = current_user.skills
+
+    render :index, status: :ok
+  end
+
   private
 
   def skill_params
