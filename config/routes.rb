@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, defaults: { format: :json }
   resources :developers, only: [:index, :show], defaults: { format: :json }
-  resources :jobs, except: [ :new, :show, :edit ], defaults: { format: :json }
+  resources :employments, except: [ :new, :show, :edit ], defaults: { format: :json }
   resources :links, except: [ :new, :show, :edit ], defaults: { format: :json }
   resources :skills, except: [ :new, :show, :edit ], defaults: { format: :json }
 
