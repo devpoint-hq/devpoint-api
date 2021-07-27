@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   has_many :links, dependent: :delete_all
   has_many :skills, dependent: :delete_all
-  has_many :jobs, dependent: :delete_all
+  has_many :employments, dependent: :delete_all
 
   has_many :appointments, class_name: 'Appointment', foreign_key: :appointment_host_id, dependent: :delete_all
 
