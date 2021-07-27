@@ -13,20 +13,20 @@ class EmploymentsController < ApplicationController
   end
 
   def index
-    @jobs = current_user.jobs
+    @employments = current_user.employments
   end
 
   def destroy
-    @job = Job.where(id: params[:id]).first
+    @employment = Employment.where(id: params[:id]).first
 
-    if @job
-      if @job.destroy
-        render :job_destroyed, status: :ok
+    if @employment
+      if @employment.destroy
+        render :employment_destroyed, status: :ok
       else
-        render :job_not_destroyed, status: :unprocessable_entity
+        render :employment_not_destroyed, status: :unprocessable_entity
       end
     else
-      render :job_does_not_exist, status: :not_found
+      render :employment_does_not_exist, status: :not_found
     end
   end
 
