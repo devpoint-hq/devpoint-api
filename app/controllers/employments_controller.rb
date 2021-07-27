@@ -12,6 +12,10 @@ class EmploymentsController < ApplicationController
     end
   end
 
+  def index
+    @jobs = current_user.jobs
+  end
+
   private
 
   def employment_params
