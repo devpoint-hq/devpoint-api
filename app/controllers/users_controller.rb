@@ -13,7 +13,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update!(user_params)
+    profile_image = user_params[:profile_image] if user_params[:profile_image]
+    params = user_params.except(:profile_image)
+    profile_image_attached = current_user.attach(profile_image) if profile_image
+
+    if profile_image_attached && current_user.update!(params)
       render json: { message: 'User updated successfully.' }, status: :ok
     else
       render json: { message: 'Something went wrong. User not updated.' }, status: :unprocessable_entity
