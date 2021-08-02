@@ -10,15 +10,14 @@
   user = User.create(
     email: Faker::Internet.unique.email,
     username: Faker::Internet.unique.username(specifier: 5..20),
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    other_names: Faker::Name.neutral_first_name,
     admin: false,
     developer: true,
     hiring_manager: false,
     password: '12345678',
     password_confirmation: '12345678'
-  )
-  user.names.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name
   )
   user.links.create(
     [
@@ -39,24 +38,42 @@
   user.skills.create(
     [
       {
-        name: 'React'
+        name: 'React',
+        years_of_experience: rand(1..5),
+        number_of_projects: rand(1..5),
+        self_rating: rand(5..10)
       },
       {
-        name: 'Redux'
+        name: 'Redux',
+        years_of_experience: rand(1..5),
+        number_of_projects: rand(1..5),
+        self_rating: rand(5..10)
       },
       {
-        name: 'Ruby'
+        name: 'Ruby',
+        years_of_experience: rand(1..10),
+        number_of_projects: rand(1..5),
+        self_rating: rand(5..10)
       },
       {
-        name: 'Ruby on Rails'
+        name: 'Ruby on Rails',
+        years_of_experience: rand(1..10),
+        number_of_projects: rand(1..15),
+        self_rating: rand(5..10)
       },
       {
-        name: 'Bootstrap'
+        name: 'Bootstrap',
+        years_of_experience: rand(1..7),
+        number_of_projects: rand(1..5),
+        self_rating: rand(5..10)
       },
       {
-        name: 'Bulma'
+        name: 'Bulma',
+        years_of_experience: rand(1..5),
+        number_of_projects: rand(1..5),
+        self_rating: rand(5..10)
       }
     ]
   )
-  user.jobs.create(title: 'Software Developer', company_name: 'Freelance')
+  user.jobs.create(title: 'Software Developer', company_name: Faker::Company.name)
 end
