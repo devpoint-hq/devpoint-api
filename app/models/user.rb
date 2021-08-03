@@ -15,9 +15,9 @@ class User < ApplicationRecord
 
   has_many :appointments, class_name: 'Appointment', foreign_key: :appointment_host_id, dependent: :delete_all
 
-  scope :all_with_developer_details, -> { where(developer: true).includes(:links, :skills, :jobs) }
+  scope :all_with_developer_details, -> { where(developer: true).includes(:links, :skills, :employments) }
   scope :is_developer_with_details, (lambda do |id|
-    where(developer: true).where(id: id).includes(:links, :skills, :jobs).first
+    where(developer: true).where(id: id).includes(:links, :skills, :employments).first
   end)
 
   def profile_image_url
