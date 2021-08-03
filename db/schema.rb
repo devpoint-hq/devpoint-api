@@ -57,16 +57,6 @@ ActiveRecord::Schema.define(version: 2021_07_27_164754) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "jobs", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "company_name"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "links", force: :cascade do |t|
     t.string "name", null: false
     t.string "url", null: false
