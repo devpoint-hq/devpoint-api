@@ -18,8 +18,8 @@ json.user do
     json.experience skill.years_of_experience
     json.projects_count skill.number_of_projects
   end
-  json.jobs @user.jobs do |job|
-    json.title job.title
-    json.company_name job.company_name
+  json.employments @user.employments do |employment|
+    json.title employment.title
+    json.company_name employment.company_name
   end
 end

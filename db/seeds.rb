@@ -75,5 +75,10 @@
       }
     ]
   )
-  user.jobs.create(title: 'Software Developer', company_name: Faker::Company.name)
+  user.employments.create(
+    title: 'Software Developer',
+    company_name: Faker::Company.name,
+    start_date: rand(15..50).months.ago,
+    end_date: rand(1..4).months.ago
+  )
 end
