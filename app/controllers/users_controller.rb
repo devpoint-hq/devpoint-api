@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
     if @user.save
       render :created, status: :ok
+      UserMailer.confirm_account(@user).deliver
     else
       render :user_not_created, status: :unprocessable_entity
     end
