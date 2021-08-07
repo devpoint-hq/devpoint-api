@@ -1,7 +1,5 @@
 class User < ApplicationRecord
-  acts_as_token_authenticatable
-
-  devise :database_authenticatable, :validatable
+  devise :database_authenticatable, :validatable, :confirmable
 
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true, length: { in: 5..20 }
