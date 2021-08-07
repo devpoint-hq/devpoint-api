@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, only: [:sessions], controllers: {sessions: 'users/sessions'}, defaults: { format: :json }
+  devise_for :users,
+    only: [:sessions, :confirmations],
+    controllers: { sessions: 'users/sessions', confirmations: 'users/confirmations' },
+    defaults: { format: :json }
 
   resources :users, defaults: { format: :json }
   resources :developers, only: [:index, :show], defaults: { format: :json }
