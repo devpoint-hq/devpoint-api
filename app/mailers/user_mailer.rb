@@ -1,10 +1,10 @@
 class UserMailer < ApplicationMailer
-  def confirm_account(user)
+  def account_confirmed(user)
     @user = user
     mail(
-      from: 'confirm_account@anewman15-dev-point.netlify.app',
+      from: 'accounts@anewman15-dev-point.netlify.app',
       to: @user.email,
-      subject: 'Confirm Your Account at anewman15-dev-point'
+      subject: 'Your account at DevPoint has been confirmed'
     )
   end
 end
