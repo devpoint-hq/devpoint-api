@@ -26,4 +26,6 @@ module DevPoint
       authentication:       'plain',
       enable_starttls_auto: true }
   end
+
+  config.active_job.queue_adapter = :sidekiq
 end
