@@ -25,7 +25,8 @@ module DevPoint
       password:             ENV['GMAIL_PASSWORD'],
       authentication:       'plain',
       enable_starttls_auto: true }
+
+    config.active_job.queue_adapter = :sidekiq
   end
 
-  config.active_job.queue_adapter = :sidekiq
 end
