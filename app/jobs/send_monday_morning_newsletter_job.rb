@@ -1,10 +1,10 @@
 class SendMondayMorningNewsletterJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  def perform
     @users = User.where(hiring_manager: true)
     @users.each do |user|
-      UserMailer.send_monday_morning_newsletter(user).deliver
+      NewslettersMailer.monday_morning_newsletter(user).deliver_now
       sleep 2
     end
   end
