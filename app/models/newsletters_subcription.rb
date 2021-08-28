@@ -1,0 +1,2 @@
+class NewslettersSubcription < ApplicationRecord
+end
