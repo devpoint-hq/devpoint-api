@@ -1,0 +1,2 @@
+class NewslettersMailer < ApplicationMailer
+end

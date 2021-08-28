@@ -1,2 +1,0 @@
-class MondayMorningNewsletterMailer < ApplicationMailer
-end
