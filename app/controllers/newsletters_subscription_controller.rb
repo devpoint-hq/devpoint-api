@@ -7,4 +7,10 @@ class NewslettersSubscriptionController < ApplicationController
       render status: :unprocessable_entity
     end
   end
+
+  private
+
+  def newsletters_subscription_params
+    params.require(:newsletters_subscription).permit(:monday_morning_newsletter, :featured_developer_newsletter)
+  end
 end
