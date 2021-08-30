@@ -1,6 +1,9 @@
-class NewslettersSubscriptionController < ApplicationController
+class NewslettersSubscriptionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
+
   def update
-    @newsletters_subscription = NewslettersSubscription.where(params[:id]).first
+    @newsletters_subscription = NewslettersSubscription.where(id: params[:id]).first
     if @newsletters_subscription.update!(newsletters_subscription_params)
       render json: { status: 'updated', message: 'Subscription updated successfully!' }
     else
