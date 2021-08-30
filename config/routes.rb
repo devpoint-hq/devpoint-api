@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :employments, except: [ :new, :show, :edit ], defaults: { format: :json }
   resources :links, except: [ :new, :show, :edit ], defaults: { format: :json }
   resources :skills, except: [ :new, :show, :edit ], defaults: { format: :json }
+  resources :newsletters_subscriptions, only: [:update], defaults: { format: :json }
 
   post '/presigned_url', to: 'direct_upload#create'
 
