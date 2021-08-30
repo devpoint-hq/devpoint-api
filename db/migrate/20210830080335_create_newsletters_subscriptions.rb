@@ -1,6 +1,6 @@
-class CreateNewslettersSubcriptions < ActiveRecord::Migration[6.0]
+class CreateNewslettersSubscriptions < ActiveRecord::Migration[6.0]
   def change
-    create_table :newsletters_subcriptions do |t|
+    create_table :newsletters_subscriptions do |t|
       t.boolean :monday_morning_newsletter, default: true
       t.boolean :featured_developer_newsletter, default: true
       t.integer :user_id

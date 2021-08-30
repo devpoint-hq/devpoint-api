@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_28_155741) do
+ActiveRecord::Schema.define(version: 2021_08_30_080335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_08_28_155741) do
     t.index ["user_id", "url"], name: "index_links_on_user_id_and_url", unique: true
   end
 
-  create_table "newsletters_subcriptions", force: :cascade do |t|
+  create_table "newsletters_subscriptions", force: :cascade do |t|
     t.boolean "monday_morning_newsletter", default: true
     t.boolean "featured_developer_newsletter", default: true
     t.integer "user_id"
