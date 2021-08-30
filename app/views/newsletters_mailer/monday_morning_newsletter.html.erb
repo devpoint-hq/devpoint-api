@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Monday is for People With a Mission!</h1>
+    <p>
+      What's your mission for this week, <%= @user.username %>?
+    </p>
+    <p>
+      DevPoint wishes you a very pleasant week full of accomplishments!
+    </p>
+    <div>
+      <p>You are receiveing this email because you are subscribed to our weekly Monday Morning Newsletter</p>
+      <p>
+        If you want to unsubscribe from this newsletter, please visit your DevPoint
+        <%= link_to  ' profile page', 'https://anewman15-dev-point.netlify.app/edit_profile' %>
+        and unsubscribe from there.
+      </p>
+    </div>
+  </body>
+</html>

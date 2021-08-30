@@ -1,13 +1,14 @@
 class User < ApplicationRecord
-  acts_as_token_authenticatable
+  devise :database_authenticatable, :validatable, :confirmable
 
-  devise :database_authenticatable, :validatable
+  after_create :add_newsletters_subcription
 
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true, length: { in: 5..20 }
   validates :password, presence: true, on: :create
   validates :password_confirmation, presence: true, on: :create
 
+  has_one :newsletters_subscription
   has_one_attached :profile_image
   has_many :links, dependent: :delete_all
   has_many :skills, dependent: :delete_all
@@ -22,5 +23,13 @@ class User < ApplicationRecord
 
   def profile_image_url
     profile_image.blob.service_url if profile_image.attached?
+  end
+
+  def add_newsletters_subcription
+    NewslettersSubscription.create(
+      user_id: id,
+      monday_morning_newsletter: true,
+      featured_developer_newsletter: true
+    )
   end
 end

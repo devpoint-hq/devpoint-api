@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_27_164754) do
+ActiveRecord::Schema.define(version: 2021_08_30_080335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,14 @@ ActiveRecord::Schema.define(version: 2021_07_27_164754) do
     t.index ["user_id", "url"], name: "index_links_on_user_id_and_url", unique: true
   end
 
+  create_table "newsletters_subscriptions", force: :cascade do |t|
+    t.boolean "monday_morning_newsletter", default: true
+    t.boolean "featured_developer_newsletter", default: true
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "skills", force: :cascade do |t|
     t.string "name", null: false
     t.integer "years_of_experience", null: false
@@ -88,12 +96,14 @@ ActiveRecord::Schema.define(version: 2021_07_27_164754) do
     t.boolean "developer", default: false, null: false
     t.boolean "hiring_manager", default: false, null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "authentication_token"
-    t.string "char(30)"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
