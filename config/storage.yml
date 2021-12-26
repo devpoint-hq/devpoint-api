@@ -13,6 +13,15 @@ amazon:
   secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
   region: <%= ENV['AWS_REGION'] %>
   bucket: <%= ENV['S3_BUCKET'] %>
+
+cloudinary:
+  service: Cloudinary
+  cloud_name: <%= ENV['CLOUDINARY_CLOUD_NAME'] %>
+  api_key: <%= ENV['CLOUDINARY_APY_KEY'] %>
+  api_secret: <%= ENV['CLOUDINARY_API_SECRET'] %>
+  secure: true
+  cdn_subdomain: true
+
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
