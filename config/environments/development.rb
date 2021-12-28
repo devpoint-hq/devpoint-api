@@ -30,7 +30,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :amazon
+  # config.active_storage.service = :amazon
 
   # ActionMailer config
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000, protocol: 'http' }

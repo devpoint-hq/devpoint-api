@@ -21,10 +21,7 @@ class DirectUploadController < ApplicationController
   end
 
   def create_blob(blob_args)
-    blob = ActiveStorage::Blob.create_before_direct_upload!(blob_args.to_h.deep_symbolize_keys)
-    profile_image_id = SecureRandom.uuid # the name of the file will just be a UUID
-    blob.update_attribute(:key, "uploads/#{profile_image_id}") # will put it in the uploads folder
-    blob
+    ActiveStorage::Blob.create_before_direct_upload!(blob_args.to_h.deep_symbolize_keys)
   end
 
   def signed_url(blob)
