@@ -11,15 +11,15 @@ default: &default
 
 development:
   <<: *default
-  database: dev-point_development
+  database: devpoint_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: dev-point_test
+  database: devpoint_test
 
 production:
   <<: *default
-  database: dev-point_production
+  database: devpoint_production
