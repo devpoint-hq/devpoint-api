@@ -48,8 +48,9 @@ ActiveRecord::Schema.define(version: 2021_08_30_080335) do
   end
 
   create_table "employments", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "company_name"
+    t.string "title", default: "", null: false
+    t.string "company_name", default: "", null: false
+    t.string "description", default: "", null: false
     t.datetime "start_date", null: false
     t.datetime "end_date", null: false
     t.integer "user_id"
@@ -89,12 +90,7 @@ ActiveRecord::Schema.define(version: 2021_08_30_080335) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "username", default: "", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "other_names"
-    t.boolean "admin", default: false, null: false
-    t.boolean "developer", default: false, null: false
-    t.boolean "hiring_manager", default: false, null: false
+    t.string "phone"
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
     t.string "confirmation_token"
@@ -105,6 +101,7 @@ ActiveRecord::Schema.define(version: 2021_08_30_080335) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["phone"], name: "index_users_on_phone", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

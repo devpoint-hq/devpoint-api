@@ -6,12 +6,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       ## Database authenticatable
       t.string :email, null: false, default: ""
       t.string :username, null: false, default: ""
-      t.string :first_name
-      t.string :last_name
-      t.string :other_names
-      t.boolean :admin, null: false, default: false
-      t.boolean :developer, null: false, default: false
-      t.boolean :hiring_manager, null: false, default: false
+      t.string :phone
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -45,6 +40,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
 
     add_index :users, :email, unique: true
     add_index :users, :username, unique: true
+    add_index :users, :phone, unique: true
     add_index :users, :confirmation_token, unique: true
     # add_index :users, :reset_password_token, unique: true
     # add_index :users, :unlock_token,         unique: true
